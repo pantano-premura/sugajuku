@@ -305,7 +305,36 @@
         <div id="tab-content-information" class="tab-content hidden">            
             <section id="information" class="py-16">                
                 <div class="container mx-auto px-6 max-w-4xl">                    
-                    <h2 class="text-3xl font-bold text-center mb-12">お知らせ</h2>                     
+                    
+                    <div class="mb-16">
+                        <h2 class="text-3xl font-bold text-center mb-10"><i class="fas fa-graduation-cap text-amber-500 mr-2"></i>合格体験記</h2>
+                        <div class="grid gap-6">
+                            <div class="bg-amber-50 rounded-lg border-l-4 border-amber-400 p-6 shadow-sm">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-amber-400 text-white text-xs font-bold px-2 py-1 rounded">高校受験合格</span>
+                                    <span class="text-amber-500 text-sm font-bold">満足度：★★★★★ (5/5)</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2 text-amber-800">宣真高等学校 合格！（特待生）</h3>
+                                
+                                <div class="mt-4 space-y-4">
+                                    <div>
+                                        <h4 class="font-bold text-gray-700 border-b border-amber-200 pb-1 mb-2">生徒様の声（M.Sさん・中3）</h4>
+                                        <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【オンライン授業の良かった点】</span><br>集団塾と違い本人のペースに合わせて見てもらえる所が良かったです。マンツーマン授業だったので解答に悩んでいると的確なタイミングで教えてもらえた所が良かったです。積極的に質問する事が苦手でしたが落ち着いたトーンで話して下さるので安心して聞く事ができました。</p>
+                                        <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【一番苦しかった時期の乗り越え方】</span><br>高校選びに悩んでいる時に先生の体験談を交えてアドバイスもらえた事が励みになりました。</p>
+                                        <p class="text-gray-700 text-sm leading-relaxed"><span class="font-semibold text-amber-700">【後輩へのメッセージ】</span><br>受験は悩む事が沢山あると思いますが、相談できる、頼れる場所がある方が絶対良いです。</p>
+                                    </div>
+                                    
+                                    <div class="bg-white p-4 rounded border border-amber-100">
+                                        <h4 class="font-bold text-gray-700 border-b border-amber-200 pb-1 mb-2">保護者様の声</h4>
+                                        <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【受験に向けての変化】</span><br>今までこんなに机に向かっているのを見た事がない位頑張っていました。終盤の追い込みも凄まじかったです。成績も頑張りと共に上がりました。</p>
+                                        <p class="text-gray-700 text-sm leading-relaxed"><span class="font-semibold text-amber-700">【保護者様より】</span><br>勉強方法が定着できず悩んでいた時にこちらにお世話になり始めました。音に過敏で集団塾は馴染めなかった為、オンラインなら娘のペースで出来るのではないか、でも先生との相性はどうだろうと心配していましたがゆったりとした話し方で授業を進めて下さる先生で、娘の表情を読み取って話を聞いて下さったりとまるでマンツーマンの塾で受けている様でした。時に悩み相談も聞いて貰って心の支えになっていたと思います。目指していた特待生での合格も先生のお陰です。<br><br>塾長（ひげおやじ）へ：本当にありがとうございました。進路に悩んだら相談させて下さい！</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="text-3xl font-bold text-center mb-10">お知らせ</h2>                     
                     <div class="space-y-8">                        
                         <div class="bg-white rounded-lg shadow-md p-6">                            
                             <p class="text-sm text-gray-500 mb-2">2025年9月28日</p>                            
@@ -422,19 +451,18 @@
 
             function showTab(tabName) {                
                 contents.forEach(content => content.classList.add('hidden'));                
-                tabs.forEach(tab => tab.classList.remove('tab-active')); // Remove old active styles                
+                tabs.forEach(tab => tab.classList.remove('tab-active')); 
                 mobileTabs.forEach(tab => tab.classList.remove('font-bold', 'bg-cyan-100'));
 
                 document.getElementById(`tab-content-${tabName}`)?.classList.remove('hidden');
 
-                // Apply active styles based on header background                
                 const activeDesktopTab = document.querySelector(`.nav-link[data-tab="${tabName}"]`);                
                 if (activeDesktopTab) {                    
                     activeDesktopTab.classList.add('tab-active');                
                 }                
                 const activeMobileTab = document.querySelector(`.nav-link-mobile[data-tab="${tabName}"]`);                
                 if (activeMobileTab) {                    
-                    activeMobileTab.classList.add('font-bold', 'bg-gray-700'); // Active style for mobile                
+                    activeMobileTab.classList.add('font-bold', 'bg-gray-700'); 
                 }            
             }
 
@@ -489,7 +517,6 @@
                 modal.classList.add('hidden');            
             });                        
 
-            // Close modal by clicking outside            
             modal.addEventListener('click', (e) => {                
                 if (e.target === modal) {                    
                     modal.classList.add('hidden');                
