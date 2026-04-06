@@ -27,7 +27,15 @@
             color: #fbbf24; /* text-amber-400 */            
             border-bottom: 2px solid #fbbf24;            
             font-weight: 700;        
-        }    
+        }
+        /* Information スマホ用タブ切り替えのCSS */
+        @media (max-width: 767px) {
+            .sp-tab-news-active #section-news { display: block; }
+            .sp-tab-news-active #section-voices { display: none; }
+            
+            .sp-tab-voices-active #section-news { display: none; }
+            .sp-tab-voices-active #section-voices { display: block; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -304,55 +312,71 @@
 
         <div id="tab-content-information" class="tab-content hidden">            
             <section id="information" class="py-16">                
-                <div class="container mx-auto px-6 max-w-4xl">                    
+                <div id="info-container" class="sp-tab-news-active container mx-auto px-6 max-w-6xl">                    
                     
-                    <div class="mb-16">
-                        <h2 class="text-3xl font-bold text-center mb-10"><i class="fas fa-graduation-cap text-amber-500 mr-2"></i>合格体験記</h2>
-                        <div class="grid gap-6">
-                            <div class="bg-amber-50 rounded-lg border-l-4 border-amber-400 p-6 shadow-sm">
-                                <div class="flex items-center justify-between mb-3">
-                                    <span class="bg-amber-400 text-white text-xs font-bold px-2 py-1 rounded">高校受験合格</span>
-                                    <span class="text-amber-500 text-sm font-bold">満足度：★★★★★ (5/5)</span>
-                                </div>
-                                <h3 class="text-xl font-bold mb-2 text-amber-800">宣真高等学校 合格！（特待生）</h3>
-                                
-                                <div class="mt-4 space-y-4">
-                                    <div>
-                                        <h4 class="font-bold text-gray-700 border-b border-amber-200 pb-1 mb-2">生徒様の声（M.Sさん・中3）</h4>
-                                        <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【オンライン授業の良かった点】</span><br>集団塾と違い本人のペースに合わせて見てもらえる所が良かったです。マンツーマン授業だったので解答に悩んでいると的確なタイミングで教えてもらえた所が良かったです。積極的に質問する事が苦手でしたが落ち着いたトーンで話して下さるので安心して聞く事ができました。</p>
-                                        <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【一番苦しかった時期の乗り越え方】</span><br>高校選びに悩んでいる時に先生の体験談を交えてアドバイスもらえた事が励みになりました。</p>
-                                        <p class="text-gray-700 text-sm leading-relaxed"><span class="font-semibold text-amber-700">【後輩へのメッセージ】</span><br>受験は悩む事が沢山あると思いますが、相談できる、頼れる場所がある方が絶対良いです。</p>
-                                    </div>
-                                    
-                                    <div class="bg-white p-4 rounded border border-amber-100">
-                                        <h4 class="font-bold text-gray-700 border-b border-amber-200 pb-1 mb-2">保護者様の声</h4>
-                                        <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【受験に向けての変化】</span><br>今までこんなに机に向かっているのを見た事がない位頑張っていました。終盤の追い込みも凄まじかったです。成績も頑張りと共に上がりました。</p>
-                                        <p class="text-gray-700 text-sm leading-relaxed"><span class="font-semibold text-amber-700">【保護者様より】</span><br>勉強方法が定着できず悩んでいた時にこちらにお世話になり始めました。音に過敏で集団塾は馴染めなかった為、オンラインなら娘のペースで出来るのではないか、でも先生との相性はどうだろうと心配していましたがゆったりとした話し方で授業を進めて下さる先生で、娘の表情を読み取って話を聞いて下さったりとまるでマンツーマンの塾で受けている様でした。時に悩み相談も聞いて貰って心の支えになっていたと思います。目指していた特待生での合格も先生のお陰です。<br><br>塾長（ひげおやじ）へ：本当にありがとうございました。進路に悩んだら相談させて下さい！</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex md:hidden border-b border-gray-200 mb-8">
+                        <button id="tab-btn-news" class="flex-1 py-3 text-center font-bold text-amber-600 border-b-2 border-amber-600 transition-colors" onclick="setInfoTab('news')">お知らせ</button>
+                        <button id="tab-btn-voices" class="flex-1 py-3 text-center font-bold text-gray-500 border-b-2 border-transparent transition-colors" onclick="setInfoTab('voices')">合格体験記</button>
                     </div>
 
-                    <h2 class="text-3xl font-bold text-center mb-10">お知らせ</h2>                     
-                    <div class="space-y-8">                        
-                        <div class="bg-white rounded-lg shadow-md p-6">                            
-                            <p class="text-sm text-gray-500 mb-2">2025年9月28日</p>                            
-                            <h3 class="text-xl font-bold mb-3">推し</h3>                            
-                            <p class="text-gray-600">                                
-                                塾長の推しはハチワレです。                            
-                            </p>                               
-                        </div>                    
+                    <div class="flex flex-col md:flex-row md:gap-12">
+                        
+                        <div id="section-news" class="w-full md:w-1/2">
+                            <h2 class="hidden md:block text-2xl font-bold text-center mb-8 border-b-2 border-gray-200 pb-2">お知らせ</h2>                     
+                            <div class="space-y-6">                        
+                                <div class="bg-white rounded-lg shadow-md p-6">                            
+                                    <p class="text-sm text-gray-500 mb-2">2025年9月28日</p>                            
+                                    <h3 class="text-xl font-bold mb-3">推し</h3>                            
+                                    <p class="text-gray-600">塾長の推しはハチワレです。</p>                               
+                                </div>                    
+                                <div class="bg-white rounded-lg shadow-md p-6">                            
+                                    <p class="text-sm text-gray-500 mb-2">2025年7月20日</p>                            
+                                    <h3 class="text-xl font-bold mb-3">ホームページを開設しました</h3>                            
+                                    <p class="text-gray-600">                                
+                                        本日、須賀オンライン塾-レガーレ-の公式ホームページを公開いたしました。このサイトを通じて、私たちの教育理念やコース内容、日々の出来事などを発信してまいります。生徒一人ひとりの未来に「つなぐ」お手伝いができるよう、講師一同、精一杯サポートさせていただきます。どうぞよろしくお願いいたします。                            
+                                    </p>                        
+                                </div>                        
+                            </div>
+                        </div>
+
+                        <div id="section-voices" class="w-full md:w-1/2">
+                            <h2 class="hidden md:block text-2xl font-bold text-center mb-8 border-b-2 border-amber-400 pb-2 text-amber-700"><i class="fas fa-graduation-cap mr-2"></i>合格体験記</h2>
+                            <div class="space-y-4">
+                                
+                                <div class="bg-amber-50 rounded-lg shadow-sm border border-amber-200">
+                                    
+                                    <button class="w-full flex justify-between items-center p-4 font-bold text-left focus:outline-none voice-toggle hover:bg-amber-100 transition-colors rounded-lg">
+                                        <div class="flex items-center">
+                                            <span class="bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded mr-3 whitespace-nowrap">高校受験</span>
+                                            <span class="text-amber-900 text-sm md:text-base">M.Sさん - 宣真高等学校 合格！（特待生）</span>
+                                        </div>
+                                        <i class="fas fa-chevron-down text-amber-600 ml-2 transition-transform"></i>
+                                    </button>
+                                    
+                                    <div class="voice-content hidden p-6 pt-2 border-t border-amber-200">
+                                        <div class="flex items-center justify-between mb-4 mt-2">
+                                            <span class="text-amber-500 text-sm font-bold">満足度：★★★★★ (5/5)</span>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div>
+                                                <h4 class="font-bold text-gray-700 border-b border-amber-200 pb-1 mb-2">生徒様の声（中3）</h4>
+                                                <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【オンライン授業の良かった点】</span><br>集団塾と違い本人のペースに合わせて見てもらえる所が良かったです。マンツーマン授業だったので解答に悩んでいると的確なタイミングで教えてもらえた所が良かったです。積極的に質問する事が苦手でしたが落ち着いたトーンで話して下さるので安心して聞く事ができました。</p>
+                                                <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【一番苦しかった時期の乗り越え方】</span><br>高校選びに悩んでいる時に先生の体験談を交えてアドバイスもらえた事が励みになりました。</p>
+                                                <p class="text-gray-700 text-sm leading-relaxed"><span class="font-semibold text-amber-700">【後輩へのメッセージ】</span><br>受験は悩む事が沢山あると思いますが、相談できる、頼れる場所がある方が絶対良いです。</p>
+                                            </div>
+                                            
+                                            <div class="bg-white p-4 rounded border border-amber-100">
+                                                <h4 class="font-bold text-gray-700 border-b border-amber-200 pb-1 mb-2">保護者様の声</h4>
+                                                <p class="text-gray-700 text-sm leading-relaxed mb-2"><span class="font-semibold text-amber-700">【受験に向けての変化】</span><br>今までこんなに机に向かっているのを見た事がない位頑張っていました。終盤の追い込みも凄まじかったです。成績も頑張りと共に上がりました。</p>
+                                                <p class="text-gray-700 text-sm leading-relaxed"><span class="font-semibold text-amber-700">【保護者様より】</span><br>勉強方法が定着できず悩んでいた時にこちらにお世話になり始めました。音に過敏で集団塾は馴染めなかった為、オンラインなら娘のペースで出来るのではないか、でも先生との相性はどうだろうと心配していましたがゆったりとした話し方で授業を進めて下さる先生で、娘の表情を読み取って話を聞いて下さったりとまるでマンツーマンの塾で受けている様でした。時に悩み相談も聞いて貰って心の支えになっていたと思います。目指していた特待生での合格も先生のお陰です。<br><br>塾長（ひげおやじ）へ：本当にありがとうございました。進路に悩んだら相談させて下さい！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+
                     </div>
-                    <div class="space-y-8 mt-8">                        
-                        <div class="bg-white rounded-lg shadow-md p-6">                            
-                            <p class="text-sm text-gray-500 mb-2">2025年7月20日</p>                            
-                            <h3 class="text-xl font-bold mb-3">ホームページを開設しました</h3>                            
-                            <p class="text-gray-600">                                
-                                本日、須賀オンライン塾-レガーレ-の公式ホームページを公開いたしました。                                このサイトを通じて、私たちの教育理念やコース内容、日々の出来事などを発信してまいります。                                生徒一人ひとりの未来に「つなぐ」お手伝いができるよう、講師一同、精一杯サポートさせていただきます。                                どうぞよろしくお願いいたします。                            
-                            </p>                        
-                        </div>                        
-                    </div>                
                 </div>            
             </section>        
         </div>
@@ -442,8 +466,27 @@
     </div>
 
     <script>        
+        // スマホ用 Informationタブ切り替え機能
+        function setInfoTab(tab) {
+            const container = document.getElementById('info-container');
+            const newsBtn = document.getElementById('tab-btn-news');
+            const voicesBtn = document.getElementById('tab-btn-voices');
+
+            if (tab === 'news') {
+                container.classList.remove('sp-tab-voices-active');
+                container.classList.add('sp-tab-news-active');
+                newsBtn.className = 'flex-1 py-3 text-center font-bold text-amber-600 border-b-2 border-amber-600 transition-colors';
+                voicesBtn.className = 'flex-1 py-3 text-center font-bold text-gray-500 border-b-2 border-transparent transition-colors';
+            } else {
+                container.classList.remove('sp-tab-news-active');
+                container.classList.add('sp-tab-voices-active');
+                voicesBtn.className = 'flex-1 py-3 text-center font-bold text-amber-600 border-b-2 border-amber-600 transition-colors';
+                newsBtn.className = 'flex-1 py-3 text-center font-bold text-gray-500 border-b-2 border-transparent transition-colors';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function () {            
-            // Tab switching logic            
+            // 全体タブ切り替え機能            
             const tabs = document.querySelectorAll('.nav-link');            
             const mobileTabs = document.querySelectorAll('.nav-link-mobile');            
             const contents = document.querySelectorAll('.tab-content');            
@@ -483,13 +526,13 @@
 
             showTab('home');
 
-            // Mobile menu toggle            
+            // スマホメニュー開閉            
             const mobileMenuButton = document.getElementById('mobile-menu-button');            
             mobileMenuButton.addEventListener('click', () => {                
                 mobileMenu.classList.toggle('hidden');            
             });
 
-            // FAQ toggle            
+            // FAQアコーディオン開閉            
             const faqToggles = document.querySelectorAll('.faq-toggle');            
             faqToggles.forEach(toggle => {                
                 toggle.addEventListener('click', () => {                    
@@ -501,7 +544,21 @@
                 });            
             });
 
-            // Modal logic            
+            // 合格体験記アコーディオン開閉
+            const voiceToggles = document.querySelectorAll('.voice-toggle');
+            voiceToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    const icon = toggle.querySelector('i.fa-chevron-down, i.fa-chevron-up');
+                    content.classList.toggle('hidden');
+                    if (icon) {
+                        icon.classList.toggle('fa-chevron-down');
+                        icon.classList.toggle('fa-chevron-up');
+                    }
+                });
+            });
+
+            // モーダル機能            
             const modal = document.getElementById('contact-modal');            
             const openModalButtons = document.querySelectorAll('.open-modal-button');            
             const closeModalButton = document.getElementById('close-modal-button');
